@@ -1,0 +1,196 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Student Registration Form</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+
+    }
+
+    body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: -moz-linear-gradient(90deg, rgba(233, 76, 161, 1) 0%, rgba(199, 74, 233, 1) 100%);
+        background: -webkit-linear-gradient(90deg, rgba(233, 76, 161, 1) 0%, rgba(199, 74, 233, 1) 100%);
+        background: linear-gradient(90deg, rgba(233, 76, 161, 1) 0%, rgba(199, 74, 233, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1", endColorstr="#c74ae9", GradientType=1);
+    }
+
+    .container {
+        width: 100%;
+        margin-left: 30px;
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+    }
+
+    .container .title {
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    .container .title a {
+        margin: 20px;
+        padding-bottom: 10px;
+        text-decoration: none;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .container.title::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, rgba(233, 76, 161, 1) 0%, rgba(199, 74, 233, 1));
+    }
+
+    /* {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+    }
+
+    body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ec3a3a, #f0740e);
+    }
+
+    .container {
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+    }
+
+    .container .title {
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+    .filter {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        background: rgb(233, 76, 161);
+        background: -moz-linear-gradient(90deg, rgba(233, 76, 161, 1) 0%, rgba(199, 74, 233, 1) 100%);
+        background: -webkit-linear-gradient(90deg, rgba(233, 76, 161, 1) 0%, rgba(199, 74, 233, 1) 100%);
+        background: linear-gradient(90deg, rgba(233, 76, 161, 1) 0%, rgba(199, 74, 233, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1", endColorstr="#c74ae9", GradientType=1);
+        opacity: .7;
+    }
+
+    .container {
+        position: relative;
+    }
+*/
+    table {
+        margin-top: 40px;
+        position: relative;
+        border-collapse: collapse;
+        border-spacing: 0;
+        box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+        border-radius: 12px 12px 0 0;
+        overflow: hidden;
+        background-color: #fff;
+
+    }
+
+    td,
+    th {
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #ba68c8;
+        color: #fafafa;
+        font-family: 'Open Sans', Sans-serif;
+        font-weight: 200;
+        text-transform: uppercase;
+
+    }
+
+    tr {
+        background-color: #fafafa;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    tr:nth-child(even) {
+        background-color: #eeeeee;
+    }
+</style>
+
+<body>
+    <!-- <div class="filter">
+
+        Full Name
+        Email Id
+        Roll No.
+        Mobile Number
+        Aadhar Card Number
+        Address
+        Pincode
+        Gender
+    </div>
+    <div class="container">
+        <h1><a>Add new Student</a></h1>
+    </div>-->
+
+</body>
+
+<div class="container">
+    <div class="title">
+        <a th:href="@{/new}">Add New Student</a>
+    </div>
+    <div class="table">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Student Name</th>
+                <th>Student Email Id</th>
+                <th>Student Roll No.</th>
+                <th>Student Mobile Number</th>
+                <th>Student Aadhar Card Number</th>
+                <th>Student Address</th>
+                <th>Student Pincode</th>
+                <th>Student Gender</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}">Student ID</td>
+                <td th:text="${student.name}">Student Name</td>
+                <td th:text="${student.email}">Student Email Id</td>
+                <td th:text="${student.rollno}">Student Roll No.</td>
+                <td th:text="${student.mobile}">Student Mobile Number</td>
+                <td th:text="${student.aadhar}">Student Aadhar Card Number</td>
+                <td th:text="${student.address}">Student Address</td>
+                <td th:text="${student.pincode}">Student Pincode</td>
+                <td th:text="${student.gender}">Student Gender</td>
+                <td><a th:href="@{'/edit/' + ${student.id}}">Update</a></td>
+                <td><a th:href="@{'/delete/' + ${student.id}}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</html>
